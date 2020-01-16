@@ -1,0 +1,37 @@
+---
+
+- name: install storage transfer packages
+  become: yes
+  yum:
+    name: "{{ mount_yum_packages }}"
+    state: latest
+
+- name: create the mount point
+  become: yes
+  file:
+    state: directory
+    path: "{{ mount_local_path }}"
+    owner: "{{ mount_local_user }}"
+    group: "{{ mount_local_group }}"
+
+- name: drop the credentials file for fstab entry
+  become: yes
+  copy:
+    content: |
+      username={{ unvaulted_mount_target_username }}
+      password={{ unvaulted_mount_target_password }}
+    dest: "{{ mount_credential_path }}"
+    mode: 0600
+
+- name: create fstab entry for share
+  become: yes
+  mount:
+    path: "{{ mount_local_path }}"
+    src: "{{ mount_target_path }}"
+    fstype: "{{ mount_fstype }}"
+    opts: "{{ mount_options }}"
+    state: mounted
+
+- name: mount the share
+  become: yes
+  shell: mount -a

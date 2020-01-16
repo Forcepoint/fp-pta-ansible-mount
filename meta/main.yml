@@ -1,0 +1,9 @@
+galaxy_info:
+  author: Jeremy Cornett
+  description: Senior Software Engineer
+  company: Forcepoint LLC
+
+  license: BSD
+  min_ansible_version: 2.4
+  galaxy_tags: []
+  dependencies: []

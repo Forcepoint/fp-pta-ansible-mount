@@ -1,0 +1,4 @@
+---
+
+unvaulted_mount_target_username: "{{ mount_target_username }}"
+unvaulted_mount_target_password: "{{ mount_target_password }}"
