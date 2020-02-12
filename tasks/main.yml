@@ -34,5 +34,6 @@
 
 - name: mount the share
   become: yes
-  shell: mount -a
-  warn: no
+  shell:
+    cmd: mount -a
+    warn: no
