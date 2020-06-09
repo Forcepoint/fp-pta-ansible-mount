@@ -8,6 +8,8 @@ vsphere-iso Packer plugin instead of using vmware-iso because the needed ISO was
 already available to any VMs. There was no need to download the ISO locally to the 
 machine running Packer.
 
+For information about PTA and how to use it with this Ansible role please visit https://github.com/Forcepoint/fp-pta-overview/blob/master/README.md
+
 ## Requirements
 
 None
