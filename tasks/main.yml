@@ -2,13 +2,13 @@
 
 - name: install storage transfer packages
   become: yes
-  yum:
+  ansible.builtin.yum:
     name: "{{ mount_yum_packages }}"
     state: latest
 
 - name: create the mount point
   become: yes
-  file:
+  ansible.builtin.file:
     state: directory
     path: "{{ mount_local_path }}"
     owner: "{{ mount_local_user }}"
@@ -16,7 +16,7 @@
 
 - name: drop the credentials file for fstab entry
   become: yes
-  copy:
+  ansible.builtin.copy:
     content: |
       username={{ unvaulted_mount_target_username }}
       password={{ unvaulted_mount_target_password }}
@@ -25,7 +25,7 @@
 
 - name: create fstab entry for share
   become: yes
-  mount:
+  ansible.posix.mount:
     path: "{{ mount_local_path }}"
     src: "{{ mount_target_path }}"
     fstype: "{{ mount_fstype }}"
@@ -34,6 +34,6 @@
 
 - name: mount the share
   become: yes
-  shell:
+  ansible.builtin.shell:
     cmd: mount -a
     warn: no
