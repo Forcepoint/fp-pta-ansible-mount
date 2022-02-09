@@ -29,11 +29,10 @@ None
   The credential file will be owned by root, so placing it under the /root directory is a good idea.
 * mount_fstype: The mount type (i.e. cifs).
 * mount_options: Options for the mount command. 
-* mount_yum_packages: Additional yum packages to install for your mounting needs (i.e. cifs-utils).
 
 ### OPTIONAL
 
-None
+* mount_yum_packages: Additional yum packages to install for your mounting needs (i.e. cifs-utils).
 
 ## Dependencies
 

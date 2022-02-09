@@ -5,6 +5,7 @@
   ansible.builtin.yum:
     name: "{{ mount_yum_packages }}"
     state: latest
+  when: mount_yum_packages is defined
 
 - name: create the mount point
   become: yes
